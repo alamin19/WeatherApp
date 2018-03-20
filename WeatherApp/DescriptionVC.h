@@ -2,8 +2,8 @@
 //  DescriptionVC.h
 //  WeatherApp
 //
-//  Created by Saddam Al Amin on 3/19/18.
-//  Copyright © 2018 Saddam Al Amin. All rights reserved.
+//  Created by  Al Amin on 3/19/18.
+//  Copyright © 2018  Al Amin. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

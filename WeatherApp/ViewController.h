@@ -27,5 +27,8 @@
 @property (strong, nonatomic) NSMutableArray *forecastArray;
 @property (strong, nonatomic) NSMutableArray *descArray;
 
+- (NSString *) getState;
+- (NSString *) getCity;
+
 @end
 

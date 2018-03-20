@@ -295,25 +295,31 @@
 
 - (IBAction)btnSubmitClicked:(UIButton *)sender {
     
+    NSString *strStateName = [self getState];
+    NSString *strCityName = [self getCity];
     
-    if (_selectedState == 0 || _selectedCity == 0) {
-        
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Weather App"
-                                                                       message:@"Please select start and city both"
-                                                                preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                              handler:^(UIAlertAction * action) {}];
-        
-        [alert addAction:defaultAction];
-        [self presentViewController:alert animated:YES completion:nil];
+    NSString *apiKeyStr = @"bcb59c17e32647d4";
+    NSString *urlRequestTemple = [NSString stringWithFormat:@"http://api.wunderground.com/api/bcb59c17e32647d4/forecast10day/q/%@/%@.json",strStateName,strCityName];
+    urlRequestTemple = [urlRequestTemple stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+    NSLog(@"%@",urlRequestTemple);
+    [self fetchTenDayJSONfromInternet: [NSString stringWithFormat:urlRequestTemple, apiKeyStr, @"forecast10day", self.latitudeStr, self.longitudeStr]];
+}
+
+- (NSString *) getState {
+    
+    if (self.selectedState == 0) {
+        return @"";
     } else {
-        
-        NSString *apiKeyStr = @"bcb59c17e32647d4";
-        NSString *urlRequestTemple = [NSString stringWithFormat:@"http://api.wunderground.com/api/bcb59c17e32647d4/forecast10day/q/%@/%@.json",self.strState,self.strCity];
-        urlRequestTemple = [urlRequestTemple stringByReplacingOccurrencesOfString:@" " withString:@"_"];
-        NSLog(@"%@",urlRequestTemple);
-        [self fetchTenDayJSONfromInternet: [NSString stringWithFormat:urlRequestTemple, apiKeyStr, @"forecast10day", self.latitudeStr, self.longitudeStr]];
+        return self.strState;
+    }
+}
+
+- (NSString *) getCity {
+    
+    if (self.selectedCity == 0) {
+        return @"";
+    } else {
+        return self.strCity;
     }
 }
 
