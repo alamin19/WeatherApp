@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnState;
 @property (weak, nonatomic) IBOutlet UIButton *btnCity;
 @property (weak, nonatomic) IBOutlet UITableView *tblView;
+
 @property NSInteger selectedState;
 @property NSInteger selectedCity;
 
